@@ -25,6 +25,8 @@ namespace SimpleThings\EntityAudit;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
+use Pequiven\MasterBundle\Service\MasterConnection;
+
 class AuditConfiguration
 {
     private $prefix = '';
@@ -36,6 +38,8 @@ class AuditConfiguration
     private $globalIgnoreColumns = array();
     private $currentUsername = '';
     private $revisionIdFieldType = 'integer';
+
+    private $connectionService;
 
     /**
      * @param ClassMetadataInfo $metadata
@@ -142,5 +146,15 @@ class AuditConfiguration
     public function getRevisionIdFieldType()
     {
         return $this->revisionIdFieldType;
+    }
+
+    public function setConnectionService(MasterConnection $service)
+    {
+        $this->connectionService = $service;
+    }
+
+    public function getConnectionService()
+    {
+        return $this->connectionService;
     }
 }

@@ -60,6 +60,9 @@
             <call method="setRevisionIdFieldType">
                 <argument>%simplethings.entityaudit.revision_id_field_type%</argument>
             </call>
+            <call method="setConnectionService">
+                <argument type="service" id="app.connection_service" />
+            </call>
         </service>
     </services>
 </container>

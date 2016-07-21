@@ -38,6 +38,7 @@ class AuditManager
 
     public function createAuditReader(EntityManager $em)
     {
+        $em = $this->config->getConnectionService()->getManager();
         return new AuditReader($em, $this->config, $this->metadataFactory);
     }
 
