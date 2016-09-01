@@ -23,8 +23,15 @@
 namespace SimpleThings\EntityAudit;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+use SimpleThings\EntityAudit\DependencyInjection\Compiler\AuditCompiler;
 
 class SimpleThingsEntityAuditBundle extends Bundle
 {
-
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+        //$container->addCompilerPass(new AuditCompiler());
+    }
 }

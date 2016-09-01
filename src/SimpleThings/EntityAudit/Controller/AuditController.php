@@ -47,7 +47,6 @@ class AuditController extends Controller
      */
     protected function getAuditManager()
     {
-        //Ojo con esto!!!
         return $this->get('simplethings_entityaudit.manager');
     }
 

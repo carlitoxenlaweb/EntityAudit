@@ -24,8 +24,7 @@
 namespace SimpleThings\EntityAudit;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
-
-use Pequiven\MasterBundle\Service\MasterConnection;
+//use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class AuditConfiguration
 {
@@ -39,7 +38,7 @@ class AuditConfiguration
     private $currentUsername = '';
     private $revisionIdFieldType = 'integer';
 
-    private $connectionService;
+    //private $container;
 
     /**
      * @param ClassMetadataInfo $metadata
@@ -148,13 +147,13 @@ class AuditConfiguration
         return $this->revisionIdFieldType;
     }
 
-    public function setConnectionService(MasterConnection $service)
+    /*public function getContainer()
     {
-        $this->connectionService = $service;
+        return $this->container;
     }
 
-    public function getConnectionService()
+    public function __construct(ContainerInterface $container)
     {
-        return $this->connectionService;
-    }
+        $this->container = $container;
+    }*/
 }
