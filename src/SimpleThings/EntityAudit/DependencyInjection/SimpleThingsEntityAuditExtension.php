@@ -32,10 +32,19 @@ class SimpleThingsEntityAuditExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
+        $server_in_file = "default";
+        $filename = realpath(dirname(__FILE__))."/../Resources/public/server_audit";
+
+        if (is_file($filename)) {
+            $file_content = fopen($filename, 'r');
+            $server_in_file = fgets($file_content);
+            fclose($file_content);
+        }
+        
         $config = $this->processConfiguration(new Configuration(), $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('auditable_pequiven.xml');
+        $loader->load('auditable_'.$server_in_file.'.xml');
 
         $configurables = array(
             'audited_entities',
