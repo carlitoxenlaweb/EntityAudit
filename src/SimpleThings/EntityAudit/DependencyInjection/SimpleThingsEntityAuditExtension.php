@@ -45,6 +45,7 @@ class SimpleThingsEntityAuditExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('auditable_'.$server_in_file.'.xml');
+        //$loader->load('auditable_master.xml');
 
         $configurables = array(
             'audited_entities',
