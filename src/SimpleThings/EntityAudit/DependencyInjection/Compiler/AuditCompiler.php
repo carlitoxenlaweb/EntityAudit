@@ -14,7 +14,7 @@ class AuditCompiler implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        var_dump($container->get('app.connection_service'));die();
+        var_dump(get_class_methods($container->get('session')->get('connectionParameter')));die();
         //$repositoryFactory = $container->getDefinition('app.doctrine.orm.repository_factory');
         //$container->findDefinition('doctrine.orm.configuration')->addMethodCall('setRepositoryFactory', [$repositoryFactory]);
         /*

@@ -32,8 +32,16 @@ class SimpleThingsEntityAuditExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+
         $server_in_file = "default";
-        $filename = realpath(dirname(__FILE__))."/../Resources/public/server_audit";
+        $filename = realpath(dirname(__FILE__))."/../Resources/public/".$ip;
 
         if (is_file($filename)) {
             $file_content = fopen($filename, 'r');
@@ -46,6 +54,12 @@ class SimpleThingsEntityAuditExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('auditable_'.$server_in_file.'.xml');
         //$loader->load('auditable_master.xml');
+        //$loader->load('auditable_pequiven.xml');
+        //$loader->load('auditable_polinter.xml');
+        //$loader->load('auditable_fertinitro.xml');
+
+        //var_dump($configs);
+        //die();
 
         $configurables = array(
             'audited_entities',

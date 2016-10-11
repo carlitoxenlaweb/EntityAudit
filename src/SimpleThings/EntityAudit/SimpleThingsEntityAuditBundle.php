@@ -29,9 +29,9 @@ use SimpleThings\EntityAudit\DependencyInjection\Compiler\AuditCompiler;
 
 class SimpleThingsEntityAuditBundle extends Bundle
 {
-    public function build(ContainerBuilder $container)
+    /*public function build(ContainerBuilder $container)
     {
         parent::build($container);
-        //$container->addCompilerPass(new AuditCompiler());
-    }
+        $container->addCompilerPass(new AuditCompiler());
+    }*/
 }
