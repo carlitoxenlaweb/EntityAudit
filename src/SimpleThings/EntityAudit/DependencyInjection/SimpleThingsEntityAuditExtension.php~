@@ -32,8 +32,6 @@ class SimpleThingsEntityAuditExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        //$ip = "DESCOMENTAR ESTA LINEA Y COMENTAR LOS 'IFs' PARA COMANDOS DOCTRINE";
-
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -55,8 +53,7 @@ class SimpleThingsEntityAuditExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('auditable_'.$server_in_file.'.xml');
-        
-	//$loader->load('auditable_master.xml');
+        //$loader->load('auditable_master.xml');
         //$loader->load('auditable_pequiven.xml');
         //$loader->load('auditable_polinter.xml');
         //$loader->load('auditable_fertinitro.xml');
@@ -84,4 +81,3 @@ class SimpleThingsEntityAuditExtension extends Extension
         }
     }
 }
-
